@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futbolle | Adiviná al futbolista secreto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+<div class="header-inner">
+<a href="index.html" class="logo">Futbolle</a>
+<nav class="main-nav">
+<a href="index.html" class="nav-link active-link">Jugar</a>
+<a href="contacto.html" class="nav-link">Contacto</a>
+<a href="https://github.com/" class="nav-link" id="github-link" target="_blank" rel="noopener">GitHub</a>
+</nav>
+<button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Cambiar tema">🌙</button>
+</div>
+</header>
+<main class="game-main">
+<section class="game-intro">
+<h1 class="game-title">Adiviná al futbolista secreto</h1>
+<p class="game-subtitle">Tenés <span id="attempts-left-inline">8</span> intentos para descubrirlo.</p>
+</section>
+<section class="game-status-bar">
+<div class="status-item">
+<span class="status-label">Intentos restantes</span>
+<span class="status-value" id="attempts-counter">8</span>
+</div>
+<div class="status-item">
+<span class="status-label">Tiempo</span>
+<span class="status-value" id="timer-display">00:00</span>
+</div>
+<div class="difficulty-selector">
+<label class="status-label" for="difficulty-select">Dificultad</label>
+<select id="difficulty-select" class="difficulty-select">
+<option value="facil">Fácil</option>
+<option value="medio" selected="selected">Medio</option>
+<option value="dificil">Difícil</option>
+</select>
+</div>
+<button type="button" class="btn btn-secondary" id="restart-btn">Reiniciar partida</button>
+<button type="button" class="btn btn-secondary" id="history-btn">Historial</button>
+</section>
+<section class="hint-photo-section hidden" id="hint-photo-section">
+<img src="" alt="Pista del jugador secreto" class="hint-photo blur-step-0" id="hint-photo">
+</section>
+<section class="extra-hints-panel hidden" id="extra-hints-panel">
+<p class="extra-hint-item" id="extra-hint-age">Edad: ?</p>
+<p class="extra-hint-item" id="extra-hint-overall">Overall: ?</p>
+<p class="extra-hint-item" id="extra-hint-height">Altura: ?</p>
+</section>
+<section class="search-section">
+<label class="search-label" for="player-search-input">Escribí el nombre del jugador</label>
+<div class="autocomplete-wrapper">
+<input type="text" id="player-search-input" class="search-input" placeholder="Mínimo 2 letras..." autocomplete="off">
+<ul class="autocomplete-list hidden" id="autocomplete-list"></ul>
+</div>
+</section>
+<section class="board-section">
+<table class="attempts-board" id="attempts-board">
+<thead>
+<tr>
+<th>Jugador</th>
+<th>Nacionalidad</th>
+<th>Club</th>
+<th>Posición</th>
+<th>Edad</th>
+<th>Overall</th>
+<th>Altura</th>
+</tr>
+</thead>
+<tbody id="attempts-board-body"></tbody>
+</table>
+</section>
+</main>
+<footer class="site-footer">
+<p>Proyecto Final Individual - Desarrollo y Arquitecturas Web 2026 - UAI</p>
+</footer>
+<div class="modal-overlay" id="start-modal-overlay">
+<div class="modal-box" id="start-modal-box">
+<h2 class="modal-title">¡Bienvenido a Futbolle!</h2>
+<p class="modal-message">Ingresá tu nombre para comenzar una nueva partida.</p>
+<div class="modal-form">
+<div class="modal-field">
+<label for="start-name-input">Tu nombre</label>
+<input type="text" id="start-name-input" placeholder="Mínimo 3 letras">
+<span class="field-error" id="start-name-error"></span>
+</div>
+<div class="modal-field">
+<label for="start-difficulty-select">Dificultad</label>
+<select id="start-difficulty-select">
+<option value="facil">Fácil</option>
+<option value="medio" selected="selected">Medio</option>
+<option value="dificil">Difícil</option>
+</select>
+</div>
+</div>
+<button type="button" class="btn btn-primary" id="start-begin-btn">Comenzar partida</button>
+</div>
+</div>
+<div class="modal-overlay hidden" id="result-modal-overlay">
+<div class="modal-box" id="result-modal-box">
+<h2 class="modal-title" id="result-modal-title"></h2>
+<p class="modal-message" id="result-modal-message"></p>
+<div class="modal-secret-player hidden" id="result-secret-player">
+<img src="" alt="Jugador secreto" class="modal-player-photo" id="result-player-photo">
+<span id="result-player-name"></span>
+</div>
+<button type="button" class="btn btn-primary" id="result-modal-restart-btn">Jugar de nuevo</button>
+<button type="button" class="btn btn-secondary" id="result-modal-close-btn">Cerrar</button>
+</div>
+</div>
+<div class="modal-overlay hidden" id="error-modal-overlay">
+<div class="modal-box" id="error-modal-box">
+<h2 class="modal-title">Ocurrió un error</h2>
+<p class="modal-message" id="error-modal-message"></p>
+<button type="button" class="btn btn-primary" id="error-modal-close-btn">Cerrar</button>
+</div>
+</div>
+<div class="modal-overlay hidden" id="history-modal-overlay">
+<div class="modal-box modal-box-large" id="history-modal-box">
+<h2 class="modal-title">Historial de partidas</h2>
+<div class="history-controls">
+<label for="history-sort-select">Ordenar por</label>
+<select id="history-sort-select">
+<option value="fecha">Fecha</option>
+<option value="intentos">Cantidad de intentos</option>
+</select>
+</div>
+<div class="history-table-wrapper">
+<table class="history-table" id="history-table">
+<thead>
+<tr>
+<th>Jugador</th>
+<th>Resultado</th>
+<th>Intentos</th>
+<th>Puntaje</th>
+<th>Fecha</th>
+<th>Duración</th>
+</tr>
+</thead>
+<tbody id="history-table-body"></tbody>
+</table>
+</div>
+<button type="button" class="btn btn-primary" id="history-modal-close-btn">Cerrar</button>
+</div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/history.js"></script>
+<script src="js/game.js"></script>
+<script src="js/events.js"></script>
+</body>
+</html>
