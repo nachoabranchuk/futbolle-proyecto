@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Futbolle | Contacto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+<div class="header-inner">
+<a href="index.html" class="logo">Futbolle</a>
+<nav class="main-nav">
+<a href="index.html" class="nav-link">Jugar</a>
+<a href="contacto.html" class="nav-link active-link">Contacto</a>
+<a href="https://github.com/" class="nav-link" id="github-link" target="_blank" rel="noopener">GitHub</a>
+</nav>
+<button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Cambiar tema">🌙</button>
+</div>
+</header>
+<main class="contact-main">
+<h1 class="game-title">Contacto</h1>
+<p class="game-subtitle">¿Encontraste un error o querés dejar un comentario? Escribinos.</p>
+<form class="contact-form" id="contact-form">
+<div class="contact-field">
+<label for="contact-name-input">Nombre</label>
+<input type="text" id="contact-name-input" placeholder="Tu nombre">
+<span class="field-error" id="contact-name-error"></span>
+</div>
+<div class="contact-field">
+<label for="contact-email-input">Email</label>
+<input type="text" id="contact-email-input" placeholder="tu@email.com">
+<span class="field-error" id="contact-email-error"></span>
+</div>
+<div class="contact-field">
+<label for="contact-message-input">Mensaje</label>
+<textarea id="contact-message-input" placeholder="Escribí tu mensaje..."></textarea>
+<span class="field-error" id="contact-message-error"></span>
+</div>
+<button type="button" class="btn btn-primary" id="contact-submit-btn">Enviar mensaje</button>
+</form>
+</main>
+<footer class="site-footer">
+<p>Proyecto Final Individual - Desarrollo y Arquitecturas Web 2026 - UAI</p>
+</footer>
+<div class="modal-overlay hidden" id="error-modal-overlay">
+<div class="modal-box" id="error-modal-box">
+<h2 class="modal-title">Revisá el formulario</h2>
+<p class="modal-message" id="error-modal-message"></p>
+<button type="button" class="btn btn-primary" id="error-modal-close-btn">Cerrar</button>
+</div>
+</div>
+<script src="js/contact.js"></script>
+</body>
+</html>
