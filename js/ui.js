@@ -39,6 +39,13 @@ var historyTableBody = document.getElementById('history-table-body');
 var historyModalCloseBtn = document.getElementById('history-modal-close-btn');
 var githubLink = document.getElementById('github-link');
 var audioContextRef = null;
+var PLAYER_PHOTO_FALLBACK = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231d2f24"/><circle cx="50" cy="38" r="18" fill="%232a3b30"/><rect x="20" y="62" width="60" height="30" rx="15" fill="%232a3b30"/></svg>');
+
+function handlePlayerPhotoError(errorEvent) {
+  var imgElement = errorEvent.target;
+  imgElement.removeEventListener('error', handlePlayerPhotoError);
+  imgElement.src = PLAYER_PHOTO_FALLBACK;
+}
 
 function showModal(overlayElement) {
   overlayElement.classList.remove('hidden');
@@ -125,6 +132,8 @@ function createAutocompleteItem(player, onSelect) {
   flagImg.src = player.flag;
   flagImg.alt = player.nationality;
   flagImg.className = 'autocomplete-flag';
+  flagImg.referrerPolicy = 'no-referrer';
+  flagImg.addEventListener('error', handlePlayerPhotoError);
   nameSpan.textContent = player.name + ' (' + player.club + ')';
   itemElement.className = 'autocomplete-item';
   itemElement.appendChild(flagImg);
@@ -164,6 +173,7 @@ function updateHintPhotoBlur(attemptsUsed) {
 }
 
 function showHintPhotoSection(photoUrl) {
+  hintPhotoImg.referrerPolicy = 'no-referrer';
   hintPhotoImg.src = photoUrl;
   hintPhotoImg.className = 'hint-photo blur-step-0';
   hintPhotoSection.classList.remove('hidden');
@@ -254,3 +264,12 @@ function loadStoredTheme() {
     applyTheme(storedTheme);
   }
 }
+
+function setupImageFallbacks() {
+  hintPhotoImg.referrerPolicy = 'no-referrer';
+  hintPhotoImg.addEventListener('error', handlePlayerPhotoError);
+  resultPlayerPhoto.referrerPolicy = 'no-referrer';
+  resultPlayerPhoto.addEventListener('error', handlePlayerPhotoError);
+}
+
+setupImageFallbacks();
