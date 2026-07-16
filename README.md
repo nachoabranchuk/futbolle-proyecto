@@ -89,3 +89,6 @@ El proyecto se publica mediante GitHub Pages desde la rama principal del reposit
 
 Trabajo Práctico Final Individual — Desarrollo y Arquitecturas Web 2026 — Universidad Abierta
 Interamericana (UAI).
+
+---
+*Nota: Los primeros commits de este repositorio figuran bajo el nombre de autor "Estudiante DAW" debido a un error en la configuración del entorno local de Git en mi computadora. Los commits finales ya se encuentran asociados correctamente a mi identidad (`ignacio abranchuk`).*
