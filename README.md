@@ -9,7 +9,7 @@ atributo: nacionalidad, club, posición, edad, overall y altura.
 
 ## Demo
 
-Jugar online: `https://<usuario>.github.io/<repositorio>/`
+[Jugar online](https://nachoabranchuk.github.io/futbolle-proyecto/)
 
 ## Tecnologías
 
