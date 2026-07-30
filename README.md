@@ -9,7 +9,7 @@ atributo: nacionalidad, club, posición, edad, overall y altura.
 
 ## Demo
 
-Jugar online: `https://<usuario>.github.io/<repositorio>/`
+Jugar online: `https://nachoabranchuk.github.io/futbolle-proyecto/`
 
 ## Tecnologías
 
@@ -17,22 +17,27 @@ Jugar online: `https://<usuario>.github.io/<repositorio>/`
 - CSS3 (Flexbox, variables CSS, sin frameworks)
 - JavaScript ES5 puro (sin `let`, `const`, arrow functions ni otra sintaxis ES6)
 
+Todos los nombres de variables, funciones, identificadores, clases y archivos del proyecto están
+escritos en español. La única excepción son los nombres de los campos que devuelven los endpoints
+de la cátedra (`name`, `nationality`, `club`, `overall`, etc.), que se mantienen tal cual los
+provee la API externa, ya que no son código propio del proyecto.
+
 ## Estructura del proyecto
 
 ```
 futbolle/
 ├── index.html          Página principal del juego
-├── contacto.html        Página de contacto
+├── contacto.html         Página de contacto
 ├── css/
-│   ├── reset.css        Normalización cross-browser
-│   └── styles.css       Estilos del proyecto (layout, tema claro/oscuro, tablero)
+│   ├── reinicio.css      Normalización cross-browser
+│   └── estilos.css        Estilos del proyecto (layout, tema claro/oscuro, tablero)
 ├── js/
-│   ├── api.js            Llamadas fetch a los endpoints de la cátedra
-│   ├── ui.js              Renderizado de DOM, modales, tema y sonido
-│   ├── history.js         Historial de partidas en LocalStorage
-│   ├── game.js            Lógica del juego (comparaciones, puntaje, timer)
-│   ├── events.js          Listeners y arranque de la aplicación (index.html)
-│   └── contact.js         Validación y envío del formulario de contacto
+│   ├── api.js              Llamadas fetch a los endpoints de la cátedra
+│   ├── interfaz.js          Renderizado de DOM, modales, tema y sonido
+│   ├── historial.js         Historial de partidas en LocalStorage
+│   ├── juego.js              Lógica del juego (comparaciones, puntaje, timer)
+│   ├── eventos.js            Listeners y arranque de la aplicación (index.html)
+│   └── contacto.js           Validación y envío del formulario de contacto
 ├── .gitignore
 └── README.md
 ```

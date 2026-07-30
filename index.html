@@ -6,63 +6,63 @@
 <title>Futbolle | Adiviná al futbolista secreto</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/reinicio.css">
+<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-<header class="site-header">
-<div class="header-inner">
+<header class="encabezado-sitio">
+<div class="contenido-encabezado">
 <a href="index.html" class="logo">Futbolle</a>
-<nav class="main-nav">
-<a href="index.html" class="nav-link active-link">Jugar</a>
-<a href="contacto.html" class="nav-link">Contacto</a>
-<a href="https://github.com/" class="nav-link" id="github-link" target="_blank" rel="noopener">GitHub</a>
+<nav class="navegacion-principal">
+<a href="index.html" class="enlace-nav enlace-activo">Jugar</a>
+<a href="contacto.html" class="enlace-nav">Contacto</a>
+<a href="https://github.com/nachoabranchuk/futbolle-proyecto" class="enlace-nav" id="enlace-github" target="_blank" rel="noopener">GitHub</a>
 </nav>
-<button type="button" class="theme-toggle" id="theme-toggle-btn" aria-label="Cambiar tema">🌙</button>
+<button type="button" class="boton-tema" id="boton-cambiar-tema" aria-label="Cambiar tema">🌙</button>
 </div>
 </header>
-<main class="game-main">
-<section class="game-intro">
-<h1 class="game-title">Adiviná al futbolista secreto</h1>
-<p class="game-subtitle">Tenés <span id="attempts-left-inline">8</span> intentos para descubrirlo.</p>
+<main class="principal-juego">
+<section class="intro-juego">
+<h1 class="titulo-juego">Adiviná al futbolista secreto</h1>
+<p class="subtitulo-juego">Tenés <span id="intentos-restantes-texto">8</span> intentos para descubrirlo.</p>
 </section>
-<section class="game-status-bar">
-<div class="status-item">
-<span class="status-label">Intentos restantes</span>
-<span class="status-value" id="attempts-counter">8</span>
+<section class="barra-estado-juego">
+<div class="item-estado">
+<span class="etiqueta-estado">Intentos restantes</span>
+<span class="valor-estado" id="contador-intentos">8</span>
 </div>
-<div class="status-item">
-<span class="status-label">Tiempo</span>
-<span class="status-value" id="timer-display">00:00</span>
+<div class="item-estado">
+<span class="etiqueta-estado">Tiempo</span>
+<span class="valor-estado" id="pantalla-tiempo">00:00</span>
 </div>
-<div class="difficulty-selector">
-<label class="status-label" for="difficulty-select">Dificultad</label>
-<select id="difficulty-select" class="difficulty-select">
+<div class="selector-dificultad-grupo">
+<label class="etiqueta-estado" for="selector-dificultad">Dificultad</label>
+<select id="selector-dificultad">
 <option value="facil">Fácil</option>
 <option value="medio" selected="selected">Medio</option>
 <option value="dificil">Difícil</option>
 </select>
 </div>
-<button type="button" class="btn btn-secondary" id="restart-btn">Reiniciar partida</button>
-<button type="button" class="btn btn-secondary" id="history-btn">Historial</button>
+<button type="button" class="boton boton-secundario" id="boton-reiniciar">Reiniciar partida</button>
+<button type="button" class="boton boton-secundario" id="boton-historial">Historial</button>
 </section>
-<section class="hint-photo-section hidden" id="hint-photo-section">
-<img src="" alt="Pista del jugador secreto" class="hint-photo blur-step-0" id="hint-photo" referrerpolicy="no-referrer">
+<section class="seccion-foto-pista oculto" id="seccion-foto-pista">
+<img src="" alt="Pista del jugador secreto" class="foto-pista paso-desenfoque-0" id="imagen-foto-pista" referrerpolicy="no-referrer">
 </section>
-<section class="extra-hints-panel hidden" id="extra-hints-panel">
-<p class="extra-hint-item" id="extra-hint-age">Edad: ?</p>
-<p class="extra-hint-item" id="extra-hint-overall">Overall: ?</p>
-<p class="extra-hint-item" id="extra-hint-height">Altura: ?</p>
+<section class="panel-pistas-extra oculto" id="panel-pistas-extra">
+<p class="item-pista-extra" id="pista-extra-edad">Edad: ?</p>
+<p class="item-pista-extra" id="pista-extra-valoracion">Overall: ?</p>
+<p class="item-pista-extra" id="pista-extra-altura">Altura: ?</p>
 </section>
-<section class="search-section">
-<label class="search-label" for="player-search-input">Escribí el nombre del jugador</label>
-<div class="autocomplete-wrapper">
-<input type="text" id="player-search-input" class="search-input" placeholder="Mínimo 2 letras..." autocomplete="off">
-<ul class="autocomplete-list hidden" id="autocomplete-list"></ul>
+<section class="seccion-busqueda">
+<label class="etiqueta-busqueda" for="entrada-busqueda">Escribí el nombre del jugador</label>
+<div class="contenedor-autocompletado">
+<input type="text" id="entrada-busqueda" class="entrada-busqueda" placeholder="Mínimo 2 letras..." autocomplete="off">
+<ul class="lista-autocompletado oculto" id="lista-autocompletado"></ul>
 </div>
 </section>
-<section class="board-section">
-<table class="attempts-board" id="attempts-board">
+<section class="seccion-tablero">
+<table class="tablero-intentos" id="tablero-intentos">
 <thead>
 <tr>
 <th>Jugador</th>
@@ -74,66 +74,66 @@
 <th>Altura</th>
 </tr>
 </thead>
-<tbody id="attempts-board-body"></tbody>
+<tbody id="cuerpo-tablero-intentos"></tbody>
 </table>
 </section>
 </main>
-<footer class="site-footer">
+<footer class="pie-sitio">
 <p>Proyecto Final Individual - Desarrollo y Arquitecturas Web 2026 - UAI</p>
 </footer>
-<div class="modal-overlay" id="start-modal-overlay">
-<div class="modal-box" id="start-modal-box">
-<h2 class="modal-title">¡Bienvenido a Futbolle!</h2>
-<p class="modal-message">Ingresá tu nombre para comenzar una nueva partida.</p>
-<div class="modal-form">
-<div class="modal-field">
-<label for="start-name-input">Tu nombre</label>
-<input type="text" id="start-name-input" placeholder="Mínimo 3 letras">
-<span class="field-error" id="start-name-error"></span>
+<div class="fondo-modal" id="fondo-modal-inicio">
+<div class="caja-modal" id="caja-modal-inicio">
+<h2 class="titulo-modal">¡Bienvenido a Futbolle!</h2>
+<p class="mensaje-modal">Ingresá tu nombre para comenzar una nueva partida.</p>
+<div class="formulario-modal">
+<div class="campo-modal">
+<label for="entrada-nombre-inicio">Tu nombre</label>
+<input type="text" id="entrada-nombre-inicio" placeholder="Mínimo 3 letras">
+<span class="error-campo" id="error-nombre-inicio"></span>
 </div>
-<div class="modal-field">
-<label for="start-difficulty-select">Dificultad</label>
-<select id="start-difficulty-select">
+<div class="campo-modal">
+<label for="selector-dificultad-inicio">Dificultad</label>
+<select id="selector-dificultad-inicio">
 <option value="facil">Fácil</option>
 <option value="medio" selected="selected">Medio</option>
 <option value="dificil">Difícil</option>
 </select>
 </div>
 </div>
-<button type="button" class="btn btn-primary" id="start-begin-btn">Comenzar partida</button>
+<button type="button" class="boton boton-primario" id="boton-comenzar">Comenzar partida</button>
 </div>
 </div>
-<div class="modal-overlay hidden" id="result-modal-overlay">
-<div class="modal-box" id="result-modal-box">
-<h2 class="modal-title" id="result-modal-title"></h2>
-<p class="modal-message" id="result-modal-message"></p>
-<div class="modal-secret-player hidden" id="result-secret-player">
-<img src="" alt="Jugador secreto" class="modal-player-photo" id="result-player-photo" referrerpolicy="no-referrer">
-<span id="result-player-name"></span>
+<div class="fondo-modal oculto" id="fondo-modal-resultado">
+<div class="caja-modal" id="caja-modal-resultado">
+<h2 class="titulo-modal" id="titulo-modal-resultado"></h2>
+<p class="mensaje-modal" id="mensaje-modal-resultado"></p>
+<div class="jugador-secreto-modal oculto" id="jugador-secreto-resultado">
+<img src="" alt="Jugador secreto" class="foto-jugador-modal" id="foto-jugador-resultado" referrerpolicy="no-referrer">
+<span id="nombre-jugador-resultado"></span>
 </div>
-<button type="button" class="btn btn-primary" id="result-modal-restart-btn">Jugar de nuevo</button>
-<button type="button" class="btn btn-secondary" id="result-modal-close-btn">Cerrar</button>
-</div>
-</div>
-<div class="modal-overlay hidden" id="error-modal-overlay">
-<div class="modal-box" id="error-modal-box">
-<h2 class="modal-title">Ocurrió un error</h2>
-<p class="modal-message" id="error-modal-message"></p>
-<button type="button" class="btn btn-primary" id="error-modal-close-btn">Cerrar</button>
+<button type="button" class="boton boton-primario" id="boton-reiniciar-resultado">Jugar de nuevo</button>
+<button type="button" class="boton boton-secundario" id="boton-cerrar-resultado">Cerrar</button>
 </div>
 </div>
-<div class="modal-overlay hidden" id="history-modal-overlay">
-<div class="modal-box modal-box-large" id="history-modal-box">
-<h2 class="modal-title">Historial de partidas</h2>
-<div class="history-controls">
-<label for="history-sort-select">Ordenar por</label>
-<select id="history-sort-select">
+<div class="fondo-modal oculto" id="fondo-modal-error">
+<div class="caja-modal" id="caja-modal-error">
+<h2 class="titulo-modal">Ocurrió un error</h2>
+<p class="mensaje-modal" id="mensaje-modal-error"></p>
+<button type="button" class="boton boton-primario" id="boton-cerrar-error">Cerrar</button>
+</div>
+</div>
+<div class="fondo-modal oculto" id="fondo-modal-historial">
+<div class="caja-modal caja-modal-grande" id="caja-modal-historial">
+<h2 class="titulo-modal">Historial de partidas</h2>
+<div class="controles-historial">
+<label for="selector-orden-historial">Ordenar por</label>
+<select id="selector-orden-historial">
 <option value="fecha">Fecha</option>
 <option value="intentos">Cantidad de intentos</option>
 </select>
 </div>
-<div class="history-table-wrapper">
-<table class="history-table" id="history-table">
+<div class="contenedor-tabla-historial">
+<table class="tabla-historial" id="tabla-historial">
 <thead>
 <tr>
 <th>Jugador</th>
@@ -144,16 +144,16 @@
 <th>Duración</th>
 </tr>
 </thead>
-<tbody id="history-table-body"></tbody>
+<tbody id="cuerpo-tabla-historial"></tbody>
 </table>
 </div>
-<button type="button" class="btn btn-primary" id="history-modal-close-btn">Cerrar</button>
+<button type="button" class="boton boton-primario" id="boton-cerrar-historial">Cerrar</button>
 </div>
 </div>
 <script src="js/api.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/history.js"></script>
-<script src="js/game.js"></script>
-<script src="js/events.js"></script>
+<script src="js/interfaz.js"></script>
+<script src="js/historial.js"></script>
+<script src="js/juego.js"></script>
+<script src="js/eventos.js"></script>
 </body>
 </html>

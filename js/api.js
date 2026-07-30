@@ -1,44 +1,44 @@
 'use strict';
 
-var API_BASE_URL = 'https://futbolle-daw-uai-2026.onrender.com';
-var API_RANDOM_URL = API_BASE_URL + '/api/players/random';
-var API_SEARCH_URL = API_BASE_URL + '/api/players/search';
+var URL_BASE_API = 'https://futbolle-daw-uai-2026.onrender.com';
+var URL_JUGADOR_ALEATORIO = URL_BASE_API + '/api/players/random';
+var URL_BUSQUEDA_JUGADORES = URL_BASE_API + '/api/players/search';
 
-function parseJsonResponse(response) {
-  if (response.ok !== true) {
-    throw new Error('La respuesta del servidor no fue exitosa (' + response.status + ').');
+function analizarRespuestaJson(respuesta) {
+  if (respuesta.ok !== true) {
+    throw new Error('La respuesta del servidor no fue exitosa (' + respuesta.status + ').');
   }
-  return response.json();
+  return respuesta.json();
 }
 
-function fetchRandomPlayer(onSuccess, onError) {
-  var handlePlayerData = function handlePlayerData(playerData) {
-    onSuccess(playerData);
+function obtenerJugadorAleatorio(alExito, alError) {
+  var manejarDatosJugador = function manejarDatosJugador(datosJugador) {
+    alExito(datosJugador);
   };
-  var handleFetchError = function handleFetchError(error) {
-    onError(error);
+  var manejarErrorPeticion = function manejarErrorPeticion(error) {
+    alError(error);
   };
-  fetch(API_RANDOM_URL)
-    .then(parseJsonResponse)
-    .then(handlePlayerData)
-    .catch(handleFetchError);
+  fetch(URL_JUGADOR_ALEATORIO)
+    .then(analizarRespuestaJson)
+    .then(manejarDatosJugador)
+    .catch(manejarErrorPeticion);
 }
 
-function buildSearchUrl(query, limit) {
-  var encodedQuery = encodeURIComponent(query);
-  return API_SEARCH_URL + '?q=' + encodedQuery + '&limit=' + limit;
+function construirUrlBusqueda(consulta, limite) {
+  var consultaCodificada = encodeURIComponent(consulta);
+  return URL_BUSQUEDA_JUGADORES + '?q=' + consultaCodificada + '&limit=' + limite;
 }
 
-function fetchSearchPlayers(query, limit, onSuccess, onError) {
-  var searchUrl = buildSearchUrl(query, limit);
-  var handlePlayersData = function handlePlayersData(playersData) {
-    onSuccess(playersData);
+function buscarJugadores(consulta, limite, alExito, alError) {
+  var urlBusqueda = construirUrlBusqueda(consulta, limite);
+  var manejarDatosJugadores = function manejarDatosJugadores(datosJugadores) {
+    alExito(datosJugadores);
   };
-  var handleFetchError = function handleFetchError(error) {
-    onError(error);
+  var manejarErrorPeticion = function manejarErrorPeticion(error) {
+    alError(error);
   };
-  fetch(searchUrl)
-    .then(parseJsonResponse)
-    .then(handlePlayersData)
-    .catch(handleFetchError);
+  fetch(urlBusqueda)
+    .then(analizarRespuestaJson)
+    .then(manejarDatosJugadores)
+    .catch(manejarErrorPeticion);
 }
