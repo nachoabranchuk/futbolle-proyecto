@@ -92,5 +92,4 @@ El proyecto se publica mediante GitHub Pages desde la rama principal del reposit
 
 ## Autor
 
-Trabajo Práctico Final Individual — Desarrollo y Arquitecturas Web 2026 — Universidad Abierta
-Interamericana (UAI).
+Ignacio Abranchuk — Trabajo Práctico Final Individual — Desarrollo y Arquitecturas Web 2026 — Universidad Abierta Interamericana (UAI).
